@@ -13,6 +13,10 @@ class Register extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 	};
+	handleOnChange = (target) => {
+		const { name, value } = target;
+		this.setState({ [name]: value });
+	};
 
 	render() {
 		return (
@@ -50,7 +54,7 @@ class Register extends Component {
 					<Input
 						formType="register"
 						type="password"
-						name="confirm-password"
+						name="confirmPassword"
 						label="Confirm Password"
 						onChange={(e) => this.handleOnChange(e.currentTarget)}
 						value={this.state.confirmPassword}
