@@ -5,9 +5,10 @@ const Input = ({ formType, name, label, value, ...rest }) => {
 	return (
 		<div className="input-group">
 			<input
-				className={`input input-renew ${value.length > 0 ? 'input-color' : null}`}
+				className={`input input-renew ${value.length > 0 ? 'input-color' : ''}`}
 				id={`${formType}-${name}`}
 				name={name}
+				value={value}
 				{...rest}
 			/>
 			{label ? (

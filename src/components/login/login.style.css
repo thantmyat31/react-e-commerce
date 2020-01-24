@@ -2,6 +2,15 @@
 	width: 45%;
 }
 
+.login-page .btn-group .btn {
+	float: left;
+	margin-right: 5px;
+}
+.login-page .btn-group .btn::after {
+	content: '';
+	clear: both;
+}
+
 @media screen and (max-width: 600px) {
 	.login-page {
 		width: 100%;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Input from './../input/input.component';
 import Button from '../button/button.component';
 import './login.style.css';
+import { signInWithGoogle } from './../../firebase/firebase.utils';
 
 class Login extends Component {
 	state = {
@@ -13,7 +14,7 @@ class Login extends Component {
 		e.preventDefault();
 
 		// CALL TO BACKEND SERVICE
-		console.log(this.state);
+		this.setState({ email: '', password: '' });
 	};
 
 	handleOnChange = (target) => {
@@ -44,7 +45,15 @@ class Login extends Component {
 						value={this.state.password}
 						required
 					/>
-					<Button type="submit" label="Login" name="btn-login" />
+					<div className="btn-group">
+						<Button type="submit" label="Login" name="btn-login" />
+						<Button
+							type="submit"
+							onClick={signInWithGoogle}
+							label="Sign In With Google"
+							name="btn-login-google"
+						/>
+					</div>
 				</form>
 			</div>
 		);

@@ -5,23 +5,25 @@
 	transition: 0.3s;
 }
 
-.btn-login {
-	border: 1px solid #007acc;
-	background: #007acc;
+.btn-login-google {
+	border: 1px solid #4c8bf5;
+	background: #4c8bf5;
 	color: #ffffff;
 }
 
-.btn-login:hover {
+.btn-login-google:hover {
 	background: #ffffff;
-	color: #007acc;
+	color: #4c8bf5;
 }
 
+.btn-login,
 .btn-register {
 	border: 1px solid #000000;
 	background: #000000;
 	color: #ffffff;
 }
 
+.btn-login:hover,
 .btn-register:hover {
 	background: #ffffff;
 	color: #000000;
