@@ -7,6 +7,7 @@ import Notfound from './pages/not-found/not-found-page';
 import Header from './components/header/header.component';
 import LoginRegister from './pages/login-register-page/login-register-page';
 import { auth } from './firebase/firebase.utils';
+import { createUserProfileDocument } from './firebase/firebase.utils';
 
 class App extends Component {
 	state = {
@@ -16,8 +17,21 @@ class App extends Component {
 	unSubscribeFromAuth = null;
 
 	componentDidMount() {
-		this.unSubscribeFromAuth = auth.onAuthStateChanged((user) => {
-			this.setState({ currentUser: user });
+		this.unSubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+			if (userAuth) {
+				const userRef = await createUserProfileDocument(userAuth);
+
+				userRef.onSnapshot((snapShot) => {
+					this.setState({
+						currentUser: {
+							id: snapShot.id,
+							...snapShot.data()
+						}
+					});
+				});
+			}
+
+			this.setState({ currentUser: userAuth });
 			console.log(this.state.currentUser);
 		});
 	}
