@@ -1,0 +1,52 @@
+.input-group {
+	position: relative;
+	width: 100%;
+}
+
+.input-group .input {
+	width: 100%;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #aaaaaa;
+	line-height: 25px;
+	margin-top: 30px;
+}
+
+.input-group .input:focus {
+	outline: none;
+}
+
+.input-group .input:focus + .label {
+	animation: shrink 0.5s forwards;
+	color: #000000;
+	font-weight: bold;
+}
+
+.input-group .label {
+	position: relative;
+	top: -25px;
+	cursor: text;
+	color: #aaaaaa;
+}
+
+.input-group .label.shrink {
+	font-size: 12px;
+	top: -50px;
+	color: #000000;
+	font-weight: bold;
+}
+
+.input-group .input-color {
+	background: #ebffff;
+}
+
+@keyframes shrink {
+	0% {
+		font-size: initial;
+		top: -25px;
+	}
+	100% {
+		font-size: 12px;
+		top: -50px;
+	}
+}

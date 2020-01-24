@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import ShopPage from './pages/shop-page/shop-page';
 import Notfound from './pages/not-found/not-found-page';
 import Header from './components/header/header.component';
+import LoginRegister from './pages/login-register-page/login-register-page';
 
 class App extends Component {
 	render() {
@@ -13,6 +14,7 @@ class App extends Component {
 				<Header />
 				<Switch>
 					<Route path="/shop" component={ShopPage} />
+					<Route path="/login" component={LoginRegister} />
 					<Route path="/not-found" component={Notfound} />
 					<Route exact path="/" component={HomePage} />
 					<Redirect to="not-found" />

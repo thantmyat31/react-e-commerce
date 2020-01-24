@@ -1,0 +1,28 @@
+.btn {
+	padding: 10px 30px;
+	margin-top: 10px;
+	text-transform: uppercase;
+	transition: 0.3s;
+}
+
+.btn-login {
+	border: 1px solid #007acc;
+	background: #007acc;
+	color: #ffffff;
+}
+
+.btn-login:hover {
+	background: #ffffff;
+	color: #007acc;
+}
+
+.btn-register {
+	border: 1px solid #000000;
+	background: #000000;
+	color: #ffffff;
+}
+
+.btn-register:hover {
+	background: #ffffff;
+	color: #000000;
+}
