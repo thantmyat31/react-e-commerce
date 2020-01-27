@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Input from './../input/input.component';
 import Button from '../button/button.component';
 import './login.style.css';
-import { signInWithGoogle } from './../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from './../../firebase/firebase.utils';
 
 class Login extends Component {
 	state = {
@@ -10,11 +10,16 @@ class Login extends Component {
 		password: ''
 	};
 
-	handleSubmit = (e) => {
+	handleSubmit = async (e) => {
 		e.preventDefault();
-
 		// CALL TO BACKEND SERVICE
-		this.setState({ email: '', password: '' });
+		const { email, password } = this.state;
+		try {
+			await auth.signInWithEmailAndPassword(email, password);
+			this.setState({ email: '', password: '' });
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	handleOnChange = (target) => {

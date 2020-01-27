@@ -2,16 +2,35 @@ import React, { Component } from 'react';
 import './register.style.css';
 import Input from './../input/input.component';
 import Button from '../button/button.component';
+import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 class Register extends Component {
 	state = {
-		name: '',
+		displayName: '',
 		email: '',
 		password: '',
 		confirmPassword: ''
 	};
-	handleSubmit = (e) => {
+	handleSubmit = async (e) => {
 		e.preventDefault();
+		const { displayName, email, password, confirmPassword } = this.state;
+		if (password !== confirmPassword) {
+			console.log('password no match!');
+			return;
+		}
+		try {
+			const { user } = await auth.createUserWithEmailAndPassword(email, password);
+			await createUserProfileDocument(user, { displayName });
+
+			this.setState({
+				displayName: '',
+				email: '',
+				password: '',
+				confirmPassword: ''
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	handleOnChange = (target) => {
 		const { name, value } = target;
@@ -19,6 +38,7 @@ class Register extends Component {
 	};
 
 	render() {
+		const { displayName, email, password, confirmPassword } = this.state;
 		return (
 			<div className="register-page">
 				<h2>I don't have an account</h2>
@@ -27,10 +47,10 @@ class Register extends Component {
 					<Input
 						formType="register"
 						type="text"
-						name="name"
+						name="displayName"
 						label="Display Name"
 						onChange={(e) => this.handleOnChange(e.currentTarget)}
-						value={this.state.name}
+						value={displayName}
 						required
 					/>
 					<Input
@@ -39,7 +59,7 @@ class Register extends Component {
 						name="email"
 						label="Email"
 						onChange={(e) => this.handleOnChange(e.currentTarget)}
-						value={this.state.email}
+						value={email}
 						required
 					/>
 					<Input
@@ -48,7 +68,7 @@ class Register extends Component {
 						name="password"
 						label="Password"
 						onChange={(e) => this.handleOnChange(e.currentTarget)}
-						value={this.state.password}
+						value={password}
 						required
 					/>
 					<Input
@@ -57,7 +77,7 @@ class Register extends Component {
 						name="confirmPassword"
 						label="Confirm Password"
 						onChange={(e) => this.handleOnChange(e.currentTarget)}
-						value={this.state.confirmPassword}
+						value={confirmPassword}
 						required
 					/>
 					<Button type="submit" label="Sign up" name="btn-register" />
