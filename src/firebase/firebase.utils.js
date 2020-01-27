@@ -3,9 +3,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 //YOUR WEB'S APP FIREBASE CONFIGURATION
-import { firebaseConfig } from '../services/firebaseConfig.js';
-
-const config = firebaseConfig;
+import { config } from '../services/firebaseConfig.js';
 
 export const createUserProfileDocument = async (userAuth, additionlData) => {
 	if (!userAuth) return;
