@@ -8,6 +8,9 @@
 
 .cart-logo-container .cart-count {
 	position: absolute;
-	top: 6px;
-	left: 10px;
+    width: 100%;
+    top: 6px;
+    left: 0;
+    display: block;
+    text-align: center;
 }
