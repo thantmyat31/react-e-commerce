@@ -27,7 +27,7 @@ class Menu extends Component {
 				id: 4,
 				title: 'women',
 				image:
-					'https://cdn.apk-cloud.com/detail/screenshot/2yUWdvF3KECuU1AvxajW1cFpvkxCcsYhBdasSzTOD3gKeXx8kwj26e5uj_Cm1tI-x28=h900.png',
+					'https://heavyeditorial.files.wordpress.com/2017/03/best-dresses-for-older-women.jpg?quality=65&strip=all',
 				size: 'large'
 			},
 			{
