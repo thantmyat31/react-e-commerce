@@ -16,3 +16,17 @@
 	height: 253px;
 	overflow: auto;
 }
+
+.cart-dropdown .cart-items::-webkit-scrollbar {
+	width: 0.5em;
+}
+
+.cart-dropdown .cart-items::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.cart-dropdown .cart-items::-webkit-scrollbar-thumb {
+	background-color: darkgrey;
+	outline: 1px solid slategrey;
+	border-radius: 5px;
+}

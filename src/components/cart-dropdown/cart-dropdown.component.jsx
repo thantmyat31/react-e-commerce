@@ -1,16 +1,24 @@
 import React from 'react';
-import Button from '../button/button.component';
-import './cart-dropdown.style.css';
 
-const CartDropdown = () => {
+import CartItem from './../cart-item/cart-item.component';
+import Button from '../button/button.component';
+
+import './cart-dropdown.style.css';
+import { connect } from 'react-redux';
+
+const CartDropdown = ({ cartItems }) => {
 	return (
 		<div className="cart-dropdown">
-			<div className="cart-items">
-				<span style={{ display: 'block' }}>Item -1 </span>
-			</div>
+			<div className="cart-items">{cartItems.map((item) => <CartItem key={item.id} item={item} />)}</div>
 			<Button label="Go to checkout" className="btn" />
 		</div>
 	);
 };
 
-export default CartDropdown;
+const mapStateToProps = (state) => {
+	return {
+		cartItems: state.cart.cartItems
+	};
+};
+
+export default connect(mapStateToProps)(CartDropdown);

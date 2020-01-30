@@ -13,6 +13,8 @@
 	background-position: center;
 	background-size: cover;
 	position: relative;
+	display: flex;
+	flex-direction: column;
 }
 
 .collection-item .bg-image .add {
@@ -21,9 +23,10 @@
 	color: #000000;
 	width: 80%;
 	position: relative;
-	top: 75%;
+	top: 36%;
 	margin: auto;
 	padding: 10px 0;
+	border: none;
 	background: rgba(255, 255, 255, 0.7);
 	transition: 0.5s;
 	cursor: pointer;
@@ -37,4 +40,16 @@
 .collection-item .collection-footer {
 	display: flex;
 	justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+	.collection-item {
+		width: 44%;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.collection-item {
+		width: 88%;
+	}
 }

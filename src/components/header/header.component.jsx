@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import CartIcon from './../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+
 import Logo from '../../assets/4.3 crown.svg.svg';
 import { auth } from './../../firebase/firebase.utils';
 import './header.style.css';
-import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 const Header = ({ currentUser, hidden }) => {
 	return (
