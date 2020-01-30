@@ -3,6 +3,13 @@
 	margin-top: 10px;
 	text-transform: uppercase;
 	transition: 0.3s;
+	border: 1px solid #000000;
+	background: #000000;
+	color: #ffffff;
+}
+.btn:hover {
+	background: #ffffff;
+	color: #000000;
 }
 
 .btn-login-google {
@@ -14,17 +21,4 @@
 .btn-login-google:hover {
 	background: #ffffff;
 	color: #4c8bf5;
-}
-
-.btn-login,
-.btn-register {
-	border: 1px solid #000000;
-	background: #000000;
-	color: #ffffff;
-}
-
-.btn-login:hover,
-.btn-register:hover {
-	background: #ffffff;
-	color: #000000;
 }

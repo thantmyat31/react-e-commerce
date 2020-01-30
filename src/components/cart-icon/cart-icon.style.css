@@ -1,0 +1,13 @@
+.cart-logo-container {
+	width: 26px;
+	height: 26px;
+	position: relative;
+	top: 5px;
+	cursor: pointer;
+}
+
+.cart-logo-container .cart-count {
+	position: absolute;
+	top: 6px;
+	left: 10px;
+}
