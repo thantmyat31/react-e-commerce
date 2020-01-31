@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { removeItem, reduceItem, addItem } from '../../redux/cart/cart.action';
 
-const CheckOutTableRow = (props) => {
-	const { imageUrl, name, quantity, price } = props.item;
+const CheckOutTableRow = ({ item, removeItem, reduceItem, addItem }) => {
+	const { imageUrl, name, quantity, price } = item;
 	return (
 		<tr>
 			<td>
@@ -9,16 +11,30 @@ const CheckOutTableRow = (props) => {
 			</td>
 			<td>{name}</td>
 			<td>
-				<span className="decrement-icon">&#x276E;</span>
+				<span className="decrement-icon" onClick={() => reduceItem(item)}>
+					&#x276E;
+				</span>
 				<span className="quantity">{quantity}</span>
-				<span className="increment-icon">&#x276F;</span>
+				<span className="increment-icon" onClick={() => addItem(item)}>
+					&#x276F;
+				</span>
 			</td>
 			<td>${price}</td>
 			<td>
-				<span className="remove-icon">&times;</span>
+				<span onClick={() => removeItem(item)} className="remove-icon">
+					&times;
+				</span>
 			</td>
 		</tr>
 	);
 };
 
-export default CheckOutTableRow;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		removeItem: (item) => dispatch(removeItem(item)),
+		reduceItem: (item) => dispatch(reduceItem(item)),
+		addItem: (item) => dispatch(addItem(item))
+	};
+};
+
+export default connect(null, mapDispatchToProps)(CheckOutTableRow);
