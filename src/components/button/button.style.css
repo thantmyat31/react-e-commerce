@@ -25,3 +25,14 @@
 	background: #ffffff;
 	color: #4c8bf5;
 }
+
+.btn-payment {
+	border: 1px solid #4c8bf5;
+	background: #4c8bf5;
+	color: #ffffff;
+}
+
+.btn-payment:hover {
+	background: #ffffff;
+	color: #4c8bf5;
+}

@@ -1,0 +1,11 @@
+.checkout-page .payment {
+	width: 80%;
+	margin: 20px auto;
+	text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+	.checkout-page .payment {
+		width: 100%;
+	}
+}

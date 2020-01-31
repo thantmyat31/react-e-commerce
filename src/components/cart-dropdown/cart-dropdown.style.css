@@ -17,6 +17,11 @@
 	overflow: auto;
 }
 
+.cart-dropdown .cart-items .no-item-message {
+	text-align: center;
+	padding-top: 30px;
+}
+
 .cart-dropdown .cart-items::-webkit-scrollbar {
 	width: 0.5em;
 }

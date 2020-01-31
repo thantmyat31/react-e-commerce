@@ -15,6 +15,7 @@ import Notfound from './pages/not-found/not-found-page';
 import LoginRegister from './pages/login-register-page/login-register-page';
 import Header from './components/header/header.component';
 import './App.css';
+import CheckOutPage from './pages/checkout-page/checkout-page';
 
 class App extends Component {
 	unSubscribeFromAuth = null;
@@ -48,6 +49,7 @@ class App extends Component {
 			<React.Fragment>
 				<Header />
 				<Switch>
+					<Route path="/checkout" component={CheckOutPage} />
 					<Route path="/shop" component={ShopPage} />
 					<Route
 						exact

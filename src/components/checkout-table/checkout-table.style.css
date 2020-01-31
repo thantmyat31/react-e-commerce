@@ -1,0 +1,60 @@
+.table-responsive {
+	width: 80%;
+	overflow: auto;
+	margin: auto;
+}
+
+.table-responsive .checkout-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 30px auto;
+	font-size: 18px;
+	min-width: 400px;
+}
+
+.checkout-table thead th,
+.checkout-table tbody td {
+	border-bottom: 1px solid #aaaaaa;
+	padding: 10px 0;
+}
+
+.checkout-table thead tr th:first-of-type,
+.checkout-table tbody tr td:first-of-type {
+	text-align: left;
+}
+
+.checkout-table tbody tr td {
+	text-align: center;
+}
+
+.checkout-table tbody tr td img.product {
+	width: 100px;
+}
+
+.checkout-table tbody tr td .remove-icon {
+	font-size: 35px;
+	cursor: pointer;
+}
+
+.checkout-table tbody tr td .quantity {
+	display: inline-block;
+	padding: 0 10px;
+}
+
+.checkout-table tbody tr td .increment-icon,
+.checkout-table tbody tr td .decrement-icon {
+	cursor: pointer;
+}
+
+.checkout-table tfoot tr td p.total {
+	margin: 0;
+	font-size: 40px;
+	text-align: right;
+	text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+	.table-responsive {
+		width: 100%;
+	}
+}
