@@ -1,8 +1,7 @@
 import React from 'react';
 
-import Button from '../../components/button/button.component';
-import './checkout-page.style.css';
 import CheckOutTable from '../../components/checkout-table/checkout-table.component';
+import './checkout-page.style.css';
 
 const CheckOutPage = () => {
 	return (
