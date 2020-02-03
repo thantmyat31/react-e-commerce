@@ -5,7 +5,6 @@ import './menu-item.style.css';
 
 const MenuItem = ({ item }) => {
 	const { title, image, size } = item;
-	console.log(item);
 	return (
 		<div className={`${size} menu-item`}>
 			<div

@@ -8,10 +8,6 @@ const CheckOutPage = () => {
 	return (
 		<div className="checkout-page">
 			<CheckOutTable />
-
-			<div className="payment">
-				<Button label="Pay with" name="btn-payment" />
-			</div>
 		</div>
 	);
 };

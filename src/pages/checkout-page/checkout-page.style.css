@@ -4,6 +4,17 @@
 	text-align: right;
 }
 
+.checkout-page .payment .test-card-info {
+	text-align: center;
+	font-size: 25px;
+	color: #f64848;
+	margin-bottom: 30px;
+}
+
+.checkout-page .payment .test-card-info p {
+	margin: 0;
+}
+
 @media screen and (max-width: 600px) {
 	.checkout-page .payment {
 		width: 100%;
