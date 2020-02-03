@@ -6,15 +6,15 @@ export const menuItems = [
 	},
 	{
 		id: 2,
-		title: 'jackets',
+		title: 'sneakers',
 		image:
-			'https://brobible.files.wordpress.com/2020/01/outerwear-jackets-winter-clearance-best-of-5.jpg?quality=90&w=372&h=217'
+			'https://www.keds.com/on/demandware.static/-/Sites-keds_us-Library/default/dw7429785d/content/seasonal-content/landing-pages/she/2019/07/mobile-row1-img.jpg'
 	},
 	{
 		id: 3,
-		title: 'shoes',
+		title: 'jackets',
 		image:
-			'https://www.keds.com/on/demandware.static/-/Sites-keds_us-Library/default/dw7429785d/content/seasonal-content/landing-pages/she/2019/07/mobile-row1-img.jpg'
+			'https://brobible.files.wordpress.com/2020/01/outerwear-jackets-winter-clearance-best-of-5.jpg?quality=90&w=372&h=217'
 	},
 	{
 		id: 4,

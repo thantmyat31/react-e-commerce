@@ -1,0 +1,11 @@
+.category-page .cat-title {
+	text-align: center;
+	padding-bottom: 30px;
+}
+
+.category-page .cat-group {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}

@@ -7,11 +7,7 @@ import { createStructuredSelector } from 'reselect';
 import menuItemsList from './../../redux/menu/menu.selector';
 
 const Menu = ({ items }) => {
-	return (
-		<div className="menu">
-			{items.map((i) => <MenuItem key={i.id} title={i.title} image={i.image} size={i.size} />)}
-		</div>
-	);
+	return <div className="menu">{items.map((i) => <MenuItem key={i.id} item={i} />)}</div>;
 };
 
 const mapStateToProps = createStructuredSelector({
