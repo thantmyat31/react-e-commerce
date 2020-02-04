@@ -6,8 +6,7 @@ import { setCurrentUser } from './redux/user/user.action';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selector';
 
-import { auth } from './firebase/firebase.utils';
-import { createUserProfileDocument } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import HomePage from './pages/home-page/home-page';
 import ShopPage from './pages/shop-page/shop-page';

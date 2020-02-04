@@ -1,11 +1,16 @@
-import SHOP_DATA from './../../services/collection-service';
+import { COLLECTION_RENDER } from './collection.type';
 
 const initialState = {
-	collectionItems: SHOP_DATA
+	collectionItems: null
 };
 
 const collectionReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case COLLECTION_RENDER:
+			return {
+				...state,
+				collectionItems: action.payload
+			};
 		default:
 			return state;
 	}

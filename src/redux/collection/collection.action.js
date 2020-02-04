@@ -1,8 +1,9 @@
 import { COLLECTION_RENDER } from './collection.type';
 
-const collectionAction = () => {
+const collectionAction = (collectionMap) => {
 	return {
-		type: COLLECTION_RENDER
+		type: COLLECTION_RENDER,
+		payload: collectionMap
 	};
 };
 

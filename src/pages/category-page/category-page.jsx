@@ -6,7 +6,6 @@ import CollectionItem from './../../components/collection-item/collection-item.c
 
 const CategoryPage = ({ categoryCollection }) => {
 	const { title, items } = categoryCollection;
-
 	return (
 		<div className="category-page">
 			<h2 className="cat-title">{title}</h2>
