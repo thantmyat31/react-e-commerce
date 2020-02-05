@@ -8,10 +8,11 @@ import Collection from './../../components/collection/collection.component';
 import './collection-overview.style.css';
 
 const CollectionOverView = ({ collection }) => {
+	
 	return (
 		<div>
 			<h2>Collection</h2>
-			{collection.map(({ id, ...rest }) => <Collection key={id} {...rest} />)}
+			{collection ? collection.map(({ id, ...rest }) => <Collection key={id} {...rest} />) : 'loading...'}
 		</div>
 	);
 };

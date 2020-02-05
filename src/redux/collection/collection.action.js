@@ -1,10 +1,33 @@
-import { COLLECTION_RENDER } from './collection.type';
+import collectionActionTypes from './collection.type';
+import { firestore, convertCollectionSnapshotToMap } from '../../firebase/firebase.utils';
 
-const collectionAction = (collectionMap) => {
+export const fetchCollectionsStart = () => {
 	return {
-		type: COLLECTION_RENDER,
-		payload: collectionMap
+		type: collectionActionTypes.FETCH_COLLECTION_START
 	};
 };
 
-export default collectionAction;
+export const fetchCollectionsSuccess = collectionMap => ({
+	type: collectionActionTypes.FETCH_COLLECTION_SUCCESS,
+	payload: collectionMap
+})
+
+export const fetchCollectionsFailure = errorMessage => ({
+	type: collectionActionTypes.FETCH_COLLECTION_FAILURE,
+	payload: errorMessage
+})
+
+export const fetchCollectionsStartAsync = () => {
+	return dispatch => {
+		const collectionFromFirestore = firestore.collection('collection');
+		dispatch(fetchCollectionsStart());
+
+		collectionFromFirestore.get().then(async (snapShot) => {
+			const collectionMap = convertCollectionSnapshotToMap(snapShot);
+			dispatch(fetchCollectionsSuccess(collectionMap));
+			this.setState({ isLoading: false });
+		}).catch(error => dispatch(fetchCollectionsFailure(error.message)))
+	}
+}
+
+// export default fetchCollectionsStart;

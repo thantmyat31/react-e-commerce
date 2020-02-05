@@ -1,16 +1,31 @@
-import { COLLECTION_RENDER } from './collection.type';
+import collectionActionTypes from './collection.type';
 
 const initialState = {
-	collectionItems: null
+	collectionItems: null,
+	isFetching: false,
+	errorMessage: undefined
 };
 
 const collectionReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case COLLECTION_RENDER:
+		case collectionActionTypes.FETCH_COLLECTION_START:
 			return {
 				...state,
-				collectionItems: action.payload
+				isFetching: true
+			}
+		case collectionActionTypes.FETCH_COLLECTION_SUCCESS:
+			return {
+				...state,
+				collectionItems: action.payload,
+				isFetching: false
 			};
+
+		case collectionActionTypes.FETCH_COLLECTION_FAILURE:
+			return {
+				...state,
+				isFetching: false,
+				errorMessage: action.payload
+			}
 		default:
 			return state;
 	}
