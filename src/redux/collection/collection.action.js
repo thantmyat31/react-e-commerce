@@ -7,27 +7,28 @@ export const fetchCollectionsStart = () => {
 	};
 };
 
-export const fetchCollectionsSuccess = collectionMap => ({
+export const fetchCollectionsSuccess = (collectionMap) => ({
 	type: collectionActionTypes.FETCH_COLLECTION_SUCCESS,
 	payload: collectionMap
-})
+});
 
-export const fetchCollectionsFailure = errorMessage => ({
+export const fetchCollectionsFailure = (errorMessage) => ({
 	type: collectionActionTypes.FETCH_COLLECTION_FAILURE,
 	payload: errorMessage
-})
+});
 
 export const fetchCollectionsStartAsync = () => {
-	return dispatch => {
+	return (dispatch) => {
 		const collectionFromFirestore = firestore.collection('collection');
 		dispatch(fetchCollectionsStart());
 
-		collectionFromFirestore.get().then(async (snapShot) => {
-			const collectionMap = convertCollectionSnapshotToMap(snapShot);
-			dispatch(fetchCollectionsSuccess(collectionMap));
-			this.setState({ isLoading: false });
-		}).catch(error => dispatch(fetchCollectionsFailure(error.message)))
-	}
-}
-
-// export default fetchCollectionsStart;
+		collectionFromFirestore
+			.get()
+			.then(async (snapShot) => {
+				const collectionMap = convertCollectionSnapshotToMap(snapShot);
+				dispatch(fetchCollectionsSuccess(collectionMap));
+				this.setState({ isLoading: false });
+			})
+			.catch((error) => dispatch(fetchCollectionsFailure(error.message)));
+	};
+};
