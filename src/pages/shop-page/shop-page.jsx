@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { fetchCollectionsStartAsync } from './../../redux/collection/collection.action';
+import { fetchCollectionsStart } from './../../redux/collection/collection.action';
 
 import CollectionOverViewContainer from '../../components/collection-overview/collection-overview-container';
 import CategoryPageContainer from './../category-page/category-page-container';
@@ -12,8 +12,8 @@ import './shop-page.style.css';
 class ShopPage extends React.Component {
 	unsubscribeFromFirestore = null;
 	componentDidMount() {
-		const { fetchCollectionsStartAsync } = this.props;
-		fetchCollectionsStartAsync();
+		const { fetchCollectionsStart } = this.props;
+		fetchCollectionsStart();
 	}
 
 	render() {
@@ -29,7 +29,7 @@ class ShopPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	fetchCollectionsStartAsync: () => dispatch(fetchCollectionsStartAsync())
+	fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 });
 
 export default connect(null, mapDispatchToProps)(ShopPage);

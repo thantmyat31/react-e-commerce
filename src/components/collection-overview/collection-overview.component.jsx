@@ -8,7 +8,6 @@ import Collection from './../../components/collection/collection.component';
 import './collection-overview.style.css';
 
 const CollectionOverView = ({ collection }) => {
-	
 	return (
 		<div>
 			<h2>Collection</h2>
