@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './register.style.css';
 import Input from './../input/input.component';
 import Button from '../button/button.component';
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+// import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { registerStart } from './../../redux/user/user.action';
+import { connect } from 'react-redux';
 
 class Register extends Component {
 	state = {
@@ -11,26 +13,28 @@ class Register extends Component {
 		password: '',
 		confirmPassword: ''
 	};
-	handleSubmit = async (e) => {
+	handleSubmit = (e) => {
 		e.preventDefault();
 		const { displayName, email, password, confirmPassword } = this.state;
+		const { registerStart } = this.props;
 		if (password !== confirmPassword) {
 			console.log('password no match!');
 			return;
 		}
-		try {
-			const { user } = await auth.createUserWithEmailAndPassword(email, password);
-			await createUserProfileDocument(user, { displayName });
+		registerStart({ email, password, displayName });
+		// try {
+		// 	const { user } = await auth.createUserWithEmailAndPassword(email, password);
+		// 	await createUserProfileDocument(user, { displayName });
 
-			this.setState({
-				displayName: '',
-				email: '',
-				password: '',
-				confirmPassword: ''
-			});
-		} catch (error) {
-			console.log(error);
-		}
+		// 	this.setState({
+		// 		displayName: '',
+		// 		email: '',
+		// 		password: '',
+		// 		confirmPassword: ''
+		// 	});
+		// } catch (error) {
+		// 	console.log(error);
+		// }
 	};
 	handleOnChange = (target) => {
 		const { name, value } = target;
@@ -39,6 +43,7 @@ class Register extends Component {
 
 	render() {
 		const { displayName, email, password, confirmPassword } = this.state;
+
 		return (
 			<div className="register-page">
 				<h2>I don't have an account</h2>
@@ -87,4 +92,8 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+const mapDispatchToProps = (dispatch) => ({
+	registerStart: (userCredentials) => dispatch(registerStart(userCredentials))
+});
+
+export default connect(null, mapDispatchToProps)(Register);

@@ -25,3 +25,7 @@ export const reduceItem = (item) => {
 		payload: item
 	};
 };
+
+export const clearCart = () => ({
+	type: cartActionTypes.CLEAR_CART
+});
