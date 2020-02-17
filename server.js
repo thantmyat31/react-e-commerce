@@ -15,7 +15,7 @@ app.use(cors());
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-if (process.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, 'build/client')));
 
 	app.get('*', function(req, res) {
