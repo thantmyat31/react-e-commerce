@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selector';
 import { checkUserSession } from './redux/user/user.action';
-
-import HomePage from './pages/home-page/home-page';
-import ShopPage from './pages/shop-page/shop-page';
-import Notfound from './pages/not-found/not-found-page';
-import LoginRegister from './pages/login-register-page/login-register-page';
 import Header from './components/header/header.component';
 import './App.css';
-import CheckOutPage from './pages/checkout-page/checkout-page';
+import Spinner from './components/spinner/spinner.component';
+
+const HomePage = lazy(() => import('./pages/home-page/home-page'));
+const ShopPage = lazy(() => import('./pages/shop-page/shop-page'));
+const LoginRegister = lazy(() => import('./pages/login-register-page/login-register-page'));
+const CheckOutPage = lazy(() => import('./components/header/header.component'));
 
 const App = ({ checkUserSession, currentUser }) => {
 	useEffect(
@@ -26,12 +26,12 @@ const App = ({ checkUserSession, currentUser }) => {
 		<React.Fragment>
 			<Header />
 			<Switch>
-				<Route path="/checkout" component={CheckOutPage} />
-				<Route path="/shop" component={ShopPage} />
-				<Route exact path="/login" render={() => (currentUser ? <Redirect to="/" /> : <LoginRegister />)} />
-				<Route path="/not-found" component={Notfound} />
-				<Route exact path="/" component={HomePage} />
-				<Redirect to="not-found" />
+				<Suspense fallback={<Spinner />}>
+					<Route exact path="/" component={HomePage} />
+					<Route path="/checkout" component={CheckOutPage} />
+					<Route path="/shop" component={ShopPage} />
+					<Route exact path="/login" render={() => (currentUser ? <Redirect to="/" /> : <LoginRegister />)} />
+				</Suspense>
 			</Switch>
 		</React.Fragment>
 	);
