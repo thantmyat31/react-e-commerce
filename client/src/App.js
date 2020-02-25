@@ -8,11 +8,12 @@ import { checkUserSession } from './redux/user/user.action';
 import Header from './components/header/header.component';
 import './App.css';
 import Spinner from './components/spinner/spinner.component';
+import ErrorBoundary from './components/error-boundary/error-boundary.component';
 
 const HomePage = lazy(() => import('./pages/home-page/home-page'));
 const ShopPage = lazy(() => import('./pages/shop-page/shop-page'));
 const LoginRegister = lazy(() => import('./pages/login-register-page/login-register-page'));
-const CheckOutPage = lazy(() => import('./components/header/header.component'));
+const CheckOutPage = lazy(() => import('./pages/checkout-page/checkout-page'));
 
 const App = ({ checkUserSession, currentUser }) => {
 	useEffect(
@@ -26,12 +27,18 @@ const App = ({ checkUserSession, currentUser }) => {
 		<React.Fragment>
 			<Header />
 			<Switch>
-				<Suspense fallback={<Spinner />}>
-					<Route exact path="/" component={HomePage} />
-					<Route path="/checkout" component={CheckOutPage} />
-					<Route path="/shop" component={ShopPage} />
-					<Route exact path="/login" render={() => (currentUser ? <Redirect to="/" /> : <LoginRegister />)} />
-				</Suspense>
+				<ErrorBoundary>
+					<Suspense fallback={<Spinner />}>
+						<Route exact path="/" component={HomePage} />
+						<Route path="/checkout" component={CheckOutPage} />
+						<Route path="/shop" component={ShopPage} />
+						<Route
+							exact
+							path="/login"
+							render={() => (currentUser ? <Redirect to="/" /> : <LoginRegister />)}
+						/>
+					</Suspense>
+				</ErrorBoundary>
 			</Switch>
 		</React.Fragment>
 	);
